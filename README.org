@@ -1,0 +1,28 @@
+#+TITLE: Habit Tracker
+#+AUTHOR: abstractionjackson
+* Overview
+The Habit Tracker is a means of defining and quantifying performance of recurring action.
+* Data
+The habit data is stored in a JSON document.
+#+BEGIN_SRC
+[
+    {
+        "name": "A short, unique string",
+        "description": "A human-readable fleshing-out of the habit. What constitutes the action?",
+        "performances" [2024-12-01, 2024-12-02, ...],
+    }
+]
+#+END
+** Future Features
+- add a "freq" field to the data that can be used to calculate the status.
+* API
+CRUD operations can be performed using a JavaScript API. Data will persist the serialized JSON in the brower's localStorage object.
+** Functions
+- Create habit:
+    - Take a name, description, and add it to the storage object
+- Get habit:
+    - Take the name of habit, and return a JavaScript object from the storage array
+- Update habit w/new performance:
+    - Take the name of a habit, and add a performance on today's date to the array of performances
+- Delete habit
+    - Take the name of a habit, and remove it from the storage array
