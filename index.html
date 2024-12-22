@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Example | Habits</title>
     <script type="module" src="lib/index.js"></script>
     <script type="module" src="script.js"></script>
   </head>
@@ -12,11 +12,6 @@
       <section>
         <header>
           <h1>Habits</h1>
-        </header>
-      </section>
-      <section>
-        <header>
-          <h2>Add Habit</h2>
         </header>
         <main>
           <form name="add-habit">
@@ -32,14 +27,10 @@
             <br />
             <input type="submit" value="Add" />
           </form>
-        </main>
-      </section>
-      <section>
-        <header><h3>My Habits</h3></header>
-        <main>
           <table name="my-habits">
             <thead>
               <tr>
+                <th>Status</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Last Performance</th>
@@ -50,19 +41,6 @@
             </thead>
             <tbody></tbody>
           </table>
-        </main>
-      </section>
-      <section>
-        <header><h3>Perform a Habit</h3></header>
-        <main>
-          <form name="perform-habit">
-            <label for="habit" value="Habit"
-              >Habit
-              <select name="habit"></select>
-            </label>
-            <br />
-            <input type="submit" value="Perform" />
-          </form>
         </main>
       </section>
     </main>
