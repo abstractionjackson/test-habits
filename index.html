@@ -14,19 +14,7 @@
           <h1>Habits</h1>
         </header>
         <main>
-          <form name="add-habit">
-            <label for="name" value="Name"
-              >Name
-              <input type="text" name="name" required />
-            </label>
-            <div></div>
-            <label for="description" value="Description"
-              >Description
-              <input type="text" name="description" required />
-            </label>
-            <br />
-            <input type="submit" value="Add" />
-          </form>
+          <button name="open-add-habit-dialog">New</button>
           <table name="my-habits">
             <thead>
               <tr>
@@ -44,5 +32,28 @@
         </main>
       </section>
     </main>
+    <dialog name="add-habit-dialog">
+      <article>
+        <header>
+          <h2>Add Habit</h2>
+          <button name="close-add-habit-dialog">Close</button>
+        </header>
+        <main>
+          <form name="add-habit">
+            <label for="name" value="Name"
+              >Name
+              <input type="text" name="name" required />
+            </label>
+            <div></div>
+            <label for="description" value="Description"
+              >Description
+              <input type="text" name="description" required />
+            </label>
+            <br />
+            <input type="submit" value="Add" />
+          </form>
+        </main>
+      </article>
+    </dialog>
   </body>
 </html>

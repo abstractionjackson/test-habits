@@ -7,6 +7,15 @@ if (!window.habits) {
 // UI Elements
 const addHabitForm = document.querySelector("form[name='add-habit']");
 const habitsTable = document.querySelector("table[name='my-habits']");
+const openAddHabitDialogButton = document.querySelector(
+  "button[name='open-add-habit-dialog']"
+);
+const closeAddHabitDialogButton = document.querySelector(
+  "button[name='close-add-habit-dialog']"
+);
+const addHabitDialog = document.querySelector(
+  "dialog[name='add-habit-dialog']"
+);
 
 // Icons
 const statusIcons = {
@@ -45,7 +54,8 @@ function renderHabitsTable() {
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
     deleteButton.addEventListener("click", e => {
-      this.handleDeleteHabit(e);
+      habits.table.delete(habit.name);
+      document.dispatchEvent(new CustomEvent("table-updated"));
     });
 
     row.appendChild(status);
@@ -65,6 +75,9 @@ function handlePerformHabit(habitName) {
 
   document.dispatchEvent(new CustomEvent("table-updated"));
 }
+function handleToggleShowAddHabitDialog() {
+  addHabitDialog.showModal();
+}
 
 // Register Event Listeners
 
@@ -74,4 +87,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("table-updated", function () {
   renderHabitsTable();
+});
+
+addHabitForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const formData = new FormData(addHabitForm);
+  const habitData = Object.fromEntries(formData.entries());
+  const { name, description } = habitData;
+
+  habits.table.add(name, description);
+
+  document.dispatchEvent(new CustomEvent("table-updated"));
+  addHabitDialog.close();
+});
+
+openAddHabitDialogButton.addEventListener("click", function () {
+  addHabitDialog.showModal();
+});
+
+closeAddHabitDialogButton.addEventListener("click", function () {
+  addHabitDialog.close();
 });
